@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html><head>  <meta charset="UTF-8">
+        <title>students</title>
+</head>
+<body style='margin-left: 30px;'>
+
+    <h1>CIT7 Students</h1>
+    <p>CIT7 students: &nbsp;Exam 1 Scores</p>
+        
+    <input type="button" id='btn' value="Get Student Scores">
+             
+ 	<div id="result"></div>
+
+ 	<p> Example of the JSON data structure this Ajax request returns:&nbsp; an array of student objects.
+    <pre><strong>[
+ {"name":"Alice","midterm":95,"final":97},
+ {"name":"Bryan","midterm":68,"final":80}
+]
+ 	</strong></pre></p>
+    
+<script>
+   
+    document.addEventListener('DOMContentLoaded', function() {      // when page has loaded, more or less
+													  
+    	document.querySelector('#btn').onclick = function(){   // attach to button
+
+        	var request = new XMLHttpRequest();
+        	request.open('GET', 'exam_scores.json');
+
+        	request.onload = function(){
+
+            	var data = JSON.parse(request.responseText);
+			
+            	if (request.status == 200) {
+            		var contents = "<table cellspacing='5'><tr><td>Name</td><td>Midterm</td><td>Final</td></tr>"
+					
+            		for(i = 0; i < data.length; i++) {
+                     	contents += "<tr><td>" + data[i].name + "</td><td>" + data[i].midterm + "</td><td>" + data[i].final + "</td></tr>";
+                	}
+					
+                	contents += "</table>";
+                	document.querySelector('#result').innerHTML = contents;
+            	}
+            	else {
+                	document.querySelector('#result').innerHTML = "There was an error.";
+            	}
+        }
+
+        request.send(null);
+    };
+	
+  });
+   
+</script>
+   
+   
+</body>
+</html>
