@@ -6,8 +6,8 @@
 
     <h1>Select a Major</h1>
         
-    <input type="button" id='btn' value="CIT Majors">
-    <input type="button" id='btn' value="Business Majors">
+    <input type="button" id='btn1' value="CIT Majors">
+    <input type="button" id='btn2' value="Business Majors">
  	<div id="result"></div>
 
  	<p><strong>We filter our dataset by major</strong></p>
@@ -16,7 +16,7 @@
    
     document.addEventListener('DOMContentLoaded', function() {      // when page has loaded, more or less
 													  
-    	document.querySelector('#btn').onclick = function(){   // attach to button
+    	document.querySelector('#btn1').onclick = function(){   // attach to button
 
         	var request = new XMLHttpRequest();
         	request.open('GET', 'cit5students.json');
@@ -29,7 +29,7 @@
             		var contents = "<table cellspacing='5'><tr><td>Name</td><td>Major</td><td>Midterm</td><td>Final</td></tr>"
 					
             		for(i = 0; i < data.length; i++) {
-                     	contents += "<tr><td>" + data[i].name + "</td><td>" + data[i].major + "</td><td>" + data[i].midterm + "</td><td>" + data[i].final + "</td></tr>";
+                     	contents += "<tr><td>" + data[i].name + "</td><td>" + data[i].major = CIT + "</td><td>" + data[i].midterm + "</td><td>" + data[i].final + "</td></tr>";
                 	}
 					
                 	contents += "</table>";
