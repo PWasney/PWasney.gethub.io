@@ -19,17 +19,17 @@
     	document.querySelector('#btn').onclick = function(){   // attach to button
 
         	var request = new XMLHttpRequest();
-        	request.open('GET', 'exam_scores.json');
+        	request.open('GET', 'cit5students.json');
 
         	request.onload = function(){
 
             	var data = JSON.parse(request.responseText);
 			
             	if (request.status == 200) {
-            		var contents = "<table cellspacing='5'><tr><td>Name</td><td>Midterm</td><td>Final</td></tr>"
+            		var contents = "<table cellspacing='5'><tr><td>Name</td><td>Major</td><td>Midterm</td><td>Final</td></tr>"
 					
             		for(i = 0; i < data.length; i++) {
-                     	contents += "<tr><td>" + data[i].name + "</td><td>" + data[i].midterm + "</td><td>" + data[i].final + "</td></tr>";
+                     	contents += "<tr><td>" + data[i].name + "</td><td>" + data[i].major + "</td><td>" + data[i].midterm + "</td><td>" + data[i].final + "</td></tr>";
                 	}
 					
                 	contents += "</table>";
