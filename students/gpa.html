@@ -1,0 +1,17 @@
+            
+     <h2>Advisees</h2>
+     <p><input type='text' ng-model='search_text' > Enter Search text</p>
+     <table class="table table-bordered table-striped">
+         <tr>
+             <th>sid</th>
+             <th>last name</th>
+             <th>first name</th>
+             <th>gpa</th>
+         </tr>
+         <tr ng-repeat = "student in students | filter:search_text ">
+             <td>{{student.id}}</td>
+             <td>{{student.first_name}}</td>
+             <td>{{student.last_name}}</td>
+             <td>{{(student.gpa_points / student.credit_hrs).toFixed(1)}}</td>
+         </tr>
+    </table>
